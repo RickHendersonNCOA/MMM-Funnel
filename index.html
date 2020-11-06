@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>My Medicare Matters Funnel</title>
+	<link rel="stylesheet" type="text/css" href="css/main.min.css">
+    <link rel="stylesheet" type="text/css" href="css/theme.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+    <style>
+        html, body {
+            min-height: 100%;
+        }
+
+        body {
+            margin: 0;
+            background: #393862;
+        }
+
+        .funnel {
+            margin: 24px auto;
+        }
+
+        .example-funnels {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <div class="example-funnels">
+        <h1>My Medicare Matters Broker Funnel</h1>
+        <h2>November 1-5</h2>
+        <div class="funnel" id="examplefunnel4"></div>
+        <h2>October</h2>
+        <div class="funnel" id="examplefunnel3"></div>
+        <h2>September</h2>
+        <div class="funnel" id="examplefunnel2"></div>
+        <h2>August</h2>
+        <div class="funnel" id="examplefunnel1"></div>
+        <h2>July</h2>
+        <div class="funnel" id="examplefunnel0"></div>
+    </div>
+
+    <script src="js/funnel-graph.js"></script>
+    <script>
+        var examples = [{
+            labels: [/*'Total Users', */'Starting Assessment', 'Completing Assessment', 'Lead to a Broker', 'Conversions to Sales'],
+            colors: ['#FFB178', '#FF3C8E'],
+            values: [/*'5272 ,  */ 119,  43, 5, 0]
+        },{
+            labels: [/*'Total Users', */'Starting Assessment', 'Completing Assessment', 'Lead to a Broker', 'Conversions to Sales'],
+            colors: ['#FFB178', '#FF3C8E'],
+            values: [/*'14393,  */ 346, 224, 23, 0]
+        },{
+            labels: [/*'Total Users', */'Starting Assessment', 'Completing Assessment', 'Lead to a Broker', 'Conversions to Sales'],
+            colors: ['#FFB178', '#FF3C8E'],
+            values: [/*'14079, */ 427, 318, 30, 1]
+        },{
+            labels: [/*'Total Users', */'Starting Assessment', 'Completing Assessment', 'Lead to a Broker', 'Conversions to Sales'],
+            colors: ['#FFB178', '#FF3C8E'],
+            values: [/*'40154, */ 3246, 2435, 171, 1]
+        },{
+            labels: [ /*'Total Users', */'Starting Assessment', 'Completing Assessment', 'Lead to a Broker', 'Conversions to Sales'],
+            colors: ['#FFB178', '#FF3C8E'],
+            values: [/*5799 , */ 501, 387, 57, 1]
+
+        }];
+
+        var graphs = [];
+
+        for(var i = 0; i < examples.length; i++) {
+
+            var graph = new FunnelGraph({
+                container: '#examplefunnel' + i,
+                gradientDirection: 'horizontal',
+                data: examples[i],
+                displayPercent: true,
+                direction: 'horizontal',
+                width: 400,
+                height: 400,
+                subLabelValue: 'percent',
+                direction: 'vertical'
+            });
+
+            graph.draw();
+            graphs.push(graph);
+        }
+
+        console.log("Graphs spawned: ", graphs);
+
+    </script>
+</body>
+</html>
